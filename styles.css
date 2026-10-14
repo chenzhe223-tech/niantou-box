@@ -96,3 +96,19 @@
 .closing-doodle .spark-glyph{display:block;width:1em;height:1em;fill:currentColor}
 .mini-icon .spark-glyph{width:15px;height:15px;fill:currentColor}
 .avatar-stack .spark-glyph{width:13px;height:13px;fill:currentColor}
+
+/* ==========================================================================
+   首屏应用入口：一进官网就能直接看到「打开念头盒」
+   按钮真实地址由 script.js 按 app-config.js 注入（data-app-link）；
+   这里只做视觉强化，颜色一律引用上面的品牌变量。
+   ========================================================================== */
+.hero-app-cta{padding:17px 30px;font-size:15px;letter-spacing:.2px;box-shadow:0 10px 24px rgba(var(--shadow-color), .16)}
+.hero-app-cta:hover{box-shadow:0 14px 30px rgba(var(--shadow-color), .22)}
+.hero-app-note{margin:16px 0 0;max-width:36em;font-size:12.5px;line-height:1.7;color:var(--color-text-soft)}
+.hero-app-note strong{color:var(--color-text)}
+@media(max-width:680px){
+  .hero-actions{flex-direction:column;align-items:stretch;gap:13px}
+  .hero-app-cta{width:100%;padding:16px 22px;font-size:15px}
+  .hero-actions .text-link{text-align:center}
+  .hero-app-note{margin-top:14px;max-width:none;font-size:12px}
+}
