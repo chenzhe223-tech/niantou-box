@@ -35,6 +35,8 @@
     // No content is sent to a third-party service; this is a same-user browser handoff.
     const destination = new URL(config.appUrl, window.location.href);
     destination.searchParams.set("capture", value);
+    // Backward compatibility: the currently published app build may still read the legacy hash payload.
+    destination.hash = "/capture?text=" + encodeURIComponent(value);
     feedback.textContent = "正在打开念头盒，并把这条念头交给应用保存……";
     const submitButton = form.querySelector('button[type="submit"]');
     if (submitButton) submitButton.disabled = true;
