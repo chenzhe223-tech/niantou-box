@@ -44,7 +44,7 @@
 
   /* --- 品牌紫反色区块（收尾区）上的浅色 --- */
   --color-on-brand:#ffffff;        /* 主标题 */
-  --color-on-brand-soft:#ddd3ff;   /* 正文 / 浅紫装饰 */
+  --color-on-brand-soft:#f6f3ff;   /* 紫底上的正文 / 浅紫装饰：4.51:1，达 WCAG AA */
 
   /* --- 官网扩展：由品牌色派生，避免再写相近色 --- */
   --color-brand-border:#dcd0fb;    /* 淡紫底上的描边 / 虚线轨道 */
