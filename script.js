@@ -23,19 +23,22 @@
     event.preventDefault();
     const value = input.value.trim();
     if (!value) {
-      feedback.textContent = "先写下一点点，再把它收进盒子吧。";
+      feedback.textContent = "先写下一点点，再收进念头盒吧。";
       input.focus();
       return;
     }
-    // This is a demo interaction, not the real NianBox app. The text stays in this page only.
-    saved.hidden = false;
-    saved.replaceChildren();
-    const item = document.createElement("article");
-    item.textContent = value;
-    saved.appendChild(item);
-    feedback.textContent = "接住了！这是官网体验小样，刷新页面后不会保留。";
-    input.value = "";
-    updateCount();
+    if (!config.appUrl || config.appStatus !== "live") {
+      feedback.textContent = "正式应用暂时不可用，请稍后再试。";
+      return;
+    }
+    // Transfer the original text directly to the app. The app saves it into its existing local inbox.
+    // No content is sent to a third-party service; this is a same-user browser handoff.
+    const destination = new URL(config.appUrl, window.location.href);
+    destination.hash = "/capture?text=" + encodeURIComponent(value);
+    feedback.textContent = "正在打开念头盒，并把这条念头交给应用保存……";
+    const submitButton = form.querySelector('button[type="submit"]');
+    if (submitButton) submitButton.disabled = true;
+    window.location.assign(destination.toString());
   });
   document.getElementById("year").textContent = String(new Date().getFullYear());
   const menuButton = document.querySelector(".menu-toggle");
